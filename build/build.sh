@@ -54,33 +54,41 @@ function GetVersion {
         # Assemble Final Version Number
         VersionNumber="$ApiVersion.$(date +"%Y.%m%d").$NumberOfCommitsToday"
 }
-    GetVersion
 
-    OutDir="build/build-plugins"
-    StagingDir="build/$RUNTIME"
-    PluginStagingDir="$StagingDir/Plugins"
+# Set variables for output and build directories to be used later
+PluginOutDir="build/build-plugins"
+StagingDir="build/$RUNTIME"
+PluginStagingDir="$StagingDir/Plugins"
 
-    mkdir -p "$OutDir" "$StagingDir" "$PluginStagingDir"
+# Create build output and staging directories.
+mkdir -p "$PluginOutDir" "$StagingDir" "$PluginStagingDir"
 
-    echo "Building Artemis.UI.Linux"
-    UIProjFile=$(find "Artemis/src" -type f -name "Artemis.UI.Linux.csproj")
-    dotnet publish --configuration Release -p:Version="$VersionNumber" --runtime "$RUNTIME" --source ./nuget-sources --output "$StagingDir" --self-contained "$UIProjFile"
+# Build Artemis UI component
+echo "Building Artemis.UI.Linux"
+GetVersion
+UIProjFile=$(find "Artemis/src" -type f -name "Artemis.UI.Linux.csproj")
+dotnet publish --configuration Release -p:Version="$VersionNumber" --runtime "$RUNTIME" --source ./nuget-sources --output "$StagingDir" --self-contained "$UIProjFile"
 
-    echo "Building Artemis.Plugins"
-    
-    PluginProjects=$(find "Artemis.Plugins/src" -type f -name "*.csproj")
-    for PluginProjFile in $PluginProjects; do
-        Name=$(basename -s .csproj "$PluginProjFile")
-        echo "Building Plugin $Name"
-        Output="$OutDir/$Name"
+# Build default Artemis plugins
+echo "Building Artemis.Plugins"
 
-        dotnet publish --configuration Release --runtime "$RUNTIME" --source ./nuget-sources --output "$Output" --no-self-contained "$PluginProjFile";
+# Search for all plugin projects
+PluginProjects=$(find "Artemis.Plugins/src" -type f -name "*.csproj")
 
-        pushd "$Output"
+for PluginProjFile in $PluginProjects; do
+    # Build each of the found project files.
+    Name=$(basename -s .csproj "$PluginProjFile")
+    echo "Building Plugin $Name"
+    Output="$PluginOutDir/$Name"
+    dotnet publish --configuration Release --runtime "$RUNTIME" --source ./nuget-sources --output "$Output" --no-self-contained "$PluginProjFile";
+    # Zip the output and place it inside of the staging directory for app deployment
+    pushd "$Output"
         zip -r "$Name.zip" .
-        popd
-        mv "$OutDir/$Name/$Name.zip" "$PluginStagingDir"
-    done
-    echo "Staging Artemis Flatpak"
-    chmod +x "$StagingDir/Artemis.UI.Linux"
-    cp -r --remove-destination "$StagingDir" /app/bin/
+    popd
+    mv "$PluginOutDir/$Name/$Name.zip" "$PluginStagingDir"
+done
+
+# Set Artemis.ui.Linux as executable and stage everything in the application's output.
+echo "Staging Artemis Flatpak"
+chmod +x "$StagingDir/Artemis.UI.Linux"
+cp -r --remove-destination "$StagingDir" /app/bin/
