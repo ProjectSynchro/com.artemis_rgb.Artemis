@@ -31,8 +31,7 @@ modules:
             RUNTIME: "linux-x64"
     sources:
       - type: file
-        path: build/build.sh
-        dest-filename: build.sh
+        path: build.sh
       - type: git
         url: https://github.com/Artemis-RGB/Artemis.git
         dest: "Artemis"
