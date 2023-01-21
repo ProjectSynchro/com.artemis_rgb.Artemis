@@ -1,4 +1,4 @@
-id: 'com.artemisrgb..Artemis'
+id: 'com.artemisrgb.Artemis'
 runtime: org.freedesktop.Platform
 runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
@@ -37,4 +37,3 @@ modules:
         commit: fd22176dbe3dd23f46b7c882143f218dbc669d09
       - artemis-sources.json
       - dotnet-runtime-sources.json
-      
