@@ -48,7 +48,7 @@ if [ "$update" = "all" ] || [ "$update" = "a" ]; then
     # Clone Git folder for Artemis and run flatpak-dotnet-generator.py on Artemis.UI.Linux.csproj
     git clone https://github.com/Artemis-RGB/Artemis.git --recurse "$temp/Artemis"
     # Generate source files for use by manifest.
-    readarray -d '' projects < <(find "$temp/Artemis" -type f -print0 -name "Artemis.UI.Linux.csproj" -print0)
+    readarray -d '' projects < <(find "$temp/Artemis" -type f -name "Artemis.UI.Linux.csproj" -print0)
     ./builder-tools/dotnet/flatpak-dotnet-generator.py -d "$dotnet" -f "$freedesktop" -r linux-x64 artemis-sources.json "${projects[@]}"
 fi
 
