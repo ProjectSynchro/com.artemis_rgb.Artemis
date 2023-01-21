@@ -1,2 +1,5 @@
 .flatpak-builder/*
 build-dir/*
+artemis-sources.bak
+artemis-plugin-sources.bak
+dotnet-runtime-sources.bak
