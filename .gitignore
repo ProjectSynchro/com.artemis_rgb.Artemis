@@ -3,7 +3,7 @@
 build-dir/*
 
 # Updater directories and files
-update/update-temp
+tmp*/
 artemis-sources.bak
 artemis-plugins-sources.bak
 dotnet-runtime-sources.bak

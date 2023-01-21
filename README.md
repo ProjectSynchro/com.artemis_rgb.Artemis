@@ -15,8 +15,8 @@ Currently, this repository includes:
 - [a metainfo file](com.artemis_rgb.artemis.metainfo.xml)
 - [a desktop file](com.artemis_rgb.artemis.desktop)
 
-There is a dependency updater script in the [`update`](update/updateSources.sh) directory.  
-The build script that invokes `dotnet publish` and completes other deployment tasks is located in the [`build`](build/build.sh) directory.
+There is a dependency updater script called [updateSources.sh](updateSources.sh).  
+The build script that invokes `dotnet publish` and completes other deployment tasks called [`build.sh`](build.sh) directory.
 
 Outlying issues are tracked in the [issue tracker](https://github.com/ProjectSynchro/com.artemis_rgb.Artemis/issues)
 
