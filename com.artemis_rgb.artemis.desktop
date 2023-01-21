@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=Artemis
+Comment=Provides advanced unified lighting across many different brands RGB peripherals 
+Categories=Utility;
+
+Icon=artemis
+Exec=Artemis.UI.Linux
+Terminal=false

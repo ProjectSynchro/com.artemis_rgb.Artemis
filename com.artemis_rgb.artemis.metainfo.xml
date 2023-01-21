@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.artemis_rgb.artemis</id>
+  
+  <name>Artemis</name>
+  <summary>Provides advanced unified lighting across many different brands RGB peripherals </summary>
+  
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>PolyForm-Noncommercial-1.0.0</project_license>
+
+  <url type="bugtracker">https://github.com/Artemis-RGB/Artemis/issues</url>
+  <url type="contact">https://discord.gg/S3MVaC9</url>
+  <url type="donation">https://wiki.artemis-rgb.com/donating</url>
+  <url type="faq">https://wiki.artemis-rgb.com/faq</url>
+  <url type="help">https://wiki.artemis-rgb.com/</url>
+  <url type="homepage">https://artemis-rgb.com/</url>
+
+  <description>
+    <p>
+      Artemis adds highly configurable support for several games to a range of RGB keyboards, mice and headsets. 
+      Pair this with OpenRGB, and you have the most configurable RGB Software on Linux, complete with support for
+      profiles, layers, effects, visual scripting, and plugins.
+    </p>
+  </description>
+  
+  <launchable type="desktop-id">com.artemis_rgb.artemis.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://wiki.artemis-rgb.com/screenshots/profile-editor.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://wiki.artemis-rgb.com/screenshots/plugins.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://wiki.artemis-rgb.com/screenshots/surface-editor.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://wiki.artemis-rgb.com/screenshots/led-selection.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://wiki.artemis-rgb.com/screenshots/shapes.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://wiki.artemis-rgb.com/screenshots/nodes.png</image>
+    </screenshot>
+  </screenshots>
+
+  <keywords>
+    <keyword>rgb</keyword>
+    <keyword>utility</keyword>
+  </keywords>
+
+</component>
