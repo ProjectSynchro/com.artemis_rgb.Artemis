@@ -6,6 +6,6 @@ Name=Artemis
 Comment=Provides advanced unified lighting across many different brands RGB peripherals 
 Categories=Utility;
 
-Icon=artemis
+Icon=com.artemis_rgb.artemis
 Exec=Artemis.UI.Linux
 Terminal=false
