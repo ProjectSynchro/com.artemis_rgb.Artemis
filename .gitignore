@@ -1,5 +1,9 @@
+# Flatpak Builder directories
 .flatpak-builder/*
 build-dir/*
+
+# Updater directories and files
+update/update-temp
 artemis-sources.bak
-artemis-plugin-sources.bak
+artemis-plugins-sources.bak
 dotnet-runtime-sources.bak
