@@ -5,18 +5,22 @@ VersionNumber=''
 function getVersion {
 # Attempt to recreate 'version' job step from gh-actions branch workflow:
 # https://github.com/Artemis-RGB/Artemis/blob/feature/gh-actions/.github/workflows/master.yml
-
 # Should just require 'git', 'grep' and gnu coreutils.
 
-    # Sed-fu the backslashes and periods in branch names.
-    local BranchName=$(git symbolic-ref --short -q HEAD | sed -r 's/[/.]+/-/g')
+local ApiVersion
+#local BranchName
+local BuildDate
+local NumberOfCommitsToday
 
-    # Don't even want to attempt to parse xml in bash without the right tools.. lol
-    local ApiVersion=$(echo "`<./src/Artemis.Core/Artemis.Core.csproj`" | grep -o -P '(?<=<PluginApiVersion>).*(?=</PluginApiVersion>)')
+    # Sed-fu the backslashes and periods in branch names. (Unused)
+    #BranchName=$(git symbolic-ref --short -q HEAD | sed -r 's/[/.]+/-/g')
+
+    # Don't even want to attempt to parse xml with grep/awk/sed.. lol
+    ApiVersion=$(grep -o -P '(?<=<PluginApiVersion>).*(?=</PluginApiVersion>)' ./src/Artemis.Core/Artemis.Core.csproj)
 
     # Get the number of commits using git rev-list, should be legit afaik
-    local BuildDate=$(date --utc +"%Y-%m-%d")
-    local NumberOfCommitsToday=$(git rev-list --count --after="$BuildDate 00:00" --before="$BuildDate 00:00" HEAD)
+    BuildDate=$(date --utc +"%Y-%m-%d")
+    NumberOfCommitsToday=$(git rev-list --count --after="$BuildDate 00:00" --before="$BuildDate 00:00" HEAD)
 
     # Assemble Final Version Number
     VersionNumber="$ApiVersion.$(date +"%Y.%m%d").$NumberOfCommitsToday"
