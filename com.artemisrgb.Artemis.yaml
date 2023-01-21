@@ -2,38 +2,45 @@ id: 'com.artemisrgb.Artemis'
 runtime: org.freedesktop.Platform
 runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
-sdk-extensions: org.freedesktop.Sdk.Extension.dotnet6
+sdk-extensions: 
+  - org.freedesktop.Sdk.Extension.dotnet6
+
 command: Artemis.UI.Linux
-#rename-appdata-file: com.artemisrgb.Artemis.metainfo.xml
 finish-args:
   - --socket=x11
   - --socket=session-bus
   - --share=ipc
   - --share=network
-build-options:
-  append-path: "/usr/lib/sdk/dotnet6/bin"
-  append-ld-library-path: "/usr/lib/sdk/dotnet6/lib"
-  env:
-    PKG_CONFIG_PATH: "/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/sdk/dotnet6/lib/pkgconfig"
-  arch:
-    aarch64:
-      env: 
-        RUNTIME: "linux-arm64"
-    x86_64:
-      env: 
-        RUNTIME: "linux-x64"
 
 modules:
   - name: artemis
     buildsystem: simple
     build-commands:
       - ./build.sh
+    build-options:
+      append-path: "/usr/lib/sdk/dotnet6/bin"
+      append-ld-library-path: "/usr/lib/sdk/dotnet6/lib"
+      env:
+        PKG_CONFIG_PATH: "/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/sdk/dotnet6/lib/pkgconfig"
+      arch:
+        aarch64:
+          env: 
+            RUNTIME: "linux-arm64"
+        x86_64:
+          env: 
+            RUNTIME: "linux-x64"
     sources:
       - type: file
         path: build/build.sh
         dest-filename: build.sh
       - type: git
         url: https://github.com/Artemis-RGB/Artemis.git
+        dest: "Artemis"
         commit: fd22176dbe3dd23f46b7c882143f218dbc669d09
+      - type: git
+        url: https://github.com/Artemis-RGB/Artemis.Plugins.git
+        dest: "Artemis.Plugins"
+        commit: 8209365a52cd2d87a3398deefab99e4390a62c28
       - artemis-sources.json
+      - artemis-plugins-sources.json
       - dotnet-runtime-sources.json
