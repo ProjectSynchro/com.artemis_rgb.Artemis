@@ -88,7 +88,21 @@ for PluginProjFile in $PluginProjects; do
     mv "$PluginOutDir/$Name/$Name.zip" "$PluginStagingDir"
 done
 
-# Set Artemis.ui.Linux as executable and stage everything in the application's output.
 echo "Staging Artemis Flatpak"
+
+# Install Metainfo and desktop files
+install -Dm644 com.artemis_rgb.Artemis.metainfo.xml /app/share/metainfo/com.artemis_rgb.Artemis.metainfo.xml
+install -Dm644 com.artemis_rgb.Artemis.desktop /app/share/applications/com.artemis_rgb.Artemis.metainfo.desktop
+
+# Install
+pushd icons
+for folder in $(find . -maxdepth 1 -mindepth 1 -type d -printf '%f\n'); do
+    install -Dm644 "$folder/com.artemis_rgb.Artemis.png" "/app/share/icons/hicolor/$folder/apps/com.artemis_rgb.Artemis.png"
+done
+popd 
+
+# Set executable bit on Artemis binary
 chmod +x "$StagingDir/Artemis.UI.Linux"
+# Install files to Flatpak staging folder.
 cp -r --remove-destination "$StagingDir" /app/bin/
+

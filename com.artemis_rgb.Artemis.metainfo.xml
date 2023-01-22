@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>com.artemis_rgb.artemis</id>
+  <id>com.artemis_rgb.Artemis</id>
   
   <name>Artemis</name>
   <summary>Provides advanced unified lighting across many different brands RGB peripherals </summary>
@@ -23,7 +23,7 @@
     </p>
   </description>
   
-  <launchable type="desktop-id">com.artemis_rgb.artemis.desktop</launchable>
+  <launchable type="desktop-id">com.artemis_rgb.Artemis.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <image>https://wiki.artemis-rgb.com/screenshots/profile-editor.png</image>

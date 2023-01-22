@@ -32,6 +32,13 @@ modules:
     sources:
       - type: file
         path: build.sh
+      - type: file
+        path: com.artemis_rgb.Artemis.desktop
+      - type: file
+        path: com.artemis_rgb.Artemis.metainfo.xml
+      - type: dir
+        path: icons
+        dest: icons
       - type: git
         url: https://github.com/Artemis-RGB/Artemis.git
         dest: "Artemis"
