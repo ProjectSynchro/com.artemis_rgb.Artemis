@@ -38,6 +38,8 @@ done
 # Update these to follow manifest
 dotnet='6'
 freedesktop='22.08'
+artemis_hash='6f7f49617525ede19bdb880ba0851315c6110109'
+artemis_plugins_hash='06efefe2b31fa4e16a200fbc39d99ed6962ddcf0'
 
 # Create temporary folder.
 temp=$(realpath "$(mktemp -d -p .)")
@@ -45,8 +47,9 @@ temp=$(realpath "$(mktemp -d -p .)")
 if [ "$update" = "all" ] || [ "$update" = "a" ]; then
     # Backup old source json file in case of fuck ups.
     mv artemis-sources.json artemis-sources.bak
-    # Clone Git folder for Artemis and run flatpak-dotnet-generator.py on Artemis.UI.Linux.csproj
+    # Clone Git repository for Artemis, checkout the correct commit hash and run flatpak-dotnet-generator.py on Artemis.UI.Linux.csproj
     git clone https://github.com/Artemis-RGB/Artemis.git --recurse "$temp/Artemis"
+    git -C "$temp/Artemis" checkout $artemis_hash
     # Generate source files for use by manifest.
     readarray -d '' projects < <(find "$temp/Artemis" -type f -name "Artemis.UI.Linux.csproj" -print0)
     ./builder-tools/dotnet/flatpak-dotnet-generator.py -d "$dotnet" -f "$freedesktop" -r linux-x64 artemis-sources.json "${projects[@]}"
@@ -55,8 +58,9 @@ fi
 if [ "$update" = "all" ] || [ "$update" = "p" ]; then
     # Backup old source json file in case of fuck ups.
     mv artemis-plugins-sources.json artemis-plugins-sources.bak
-    # Clone Git folder for Artemis.Plugins and find all csproj files.
+    # Clone Git repository for Artemis.Plugins, checkout the correct commit hash and find all csproj files.
     git clone https://github.com/Artemis-RGB/Artemis.Plugins.git --recurse "$temp/Artemis.Plugins"
+    git -C "$temp/Artemis.Plugins" checkout $artemis_plugins_hash
     # Generate source files for use by manifest.
     readarray -d '' projects < <(find "$temp/Artemis.Plugins" -type f -name "*.csproj" -print0)
     ./builder-tools/dotnet/flatpak-dotnet-generator.py -d "$dotnet" -f "$freedesktop" -r linux-x64 artemis-plugins-sources.json "${projects[@]}"

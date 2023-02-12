@@ -42,11 +42,11 @@ modules:
       - type: git
         url: https://github.com/Artemis-RGB/Artemis.git
         dest: "Artemis"
-        commit: fd22176dbe3dd23f46b7c882143f218dbc669d09
+        commit: 6f7f49617525ede19bdb880ba0851315c6110109
       - type: git
         url: https://github.com/Artemis-RGB/Artemis.Plugins.git
         dest: "Artemis.Plugins"
-        commit: 8209365a52cd2d87a3398deefab99e4390a62c28
+        commit: 06efefe2b31fa4e16a200fbc39d99ed6962ddcf0
       - artemis-sources.json
       - artemis-plugins-sources.json
       - dotnet-runtime-sources.json
