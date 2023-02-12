@@ -96,7 +96,7 @@ install -Dm644 com.artemis_rgb.Artemis.desktop /app/share/applications/com.artem
 
 # Install
 pushd icons
-find . -maxdepth 1 -mindepth 1 -type d -printf '%f\n' -print0 | while IFS= read -r -d '' folder
+find . -maxdepth 1 -mindepth 1 -type d -print0 | while IFS= read -r -d '' folder
 do
     install -Dm644 "$folder/com.artemis_rgb.Artemis.png" "/app/share/icons/hicolor/$folder/apps/com.artemis_rgb.Artemis.png"
 done
