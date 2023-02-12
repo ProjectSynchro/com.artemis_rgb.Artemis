@@ -20,4 +20,14 @@ There is a build script called during building named [`build.sh`](build.sh).
 
 Outlying issues are tracked in the [issue tracker](https://github.com/ProjectSynchro/com.artemis_rgb.Artemis/issues)
 
+### Want to build this?
 
+First clone this repo and change directory into it, then:
+
+```sh
+## Install the freedesktop SDK, runtime and the dotnet 6 SDK extension for the freedesktop SDK
+flatpak install flathub org.freedesktop.Platform//22.08 org.freedesktop.Sdk//22.08 org.freedesktop.Sdk.Extension.dotnet6//22.08
+
+## Install flatpak-builder for your distro and run this, it will locally install the Flatpak for you.
+flatpak-builder --user --install --force-clean build-dir com.artemis_rgb.Artemis.yaml
+```
