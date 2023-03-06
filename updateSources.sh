@@ -38,8 +38,8 @@ done
 # Update these to follow manifest
 dotnet='6'
 freedesktop='22.08'
-artemis_hash='6f7f49617525ede19bdb880ba0851315c6110109'
-artemis_plugins_hash='06efefe2b31fa4e16a200fbc39d99ed6962ddcf0'
+artemis_hash='66fc2988ae727cbcb1f273b3e9112cd5ca9990fc'
+artemis_plugins_hash='9fbf1f9f33dac69ede804607dc278172cb9f5b1f'
 
 # Create temporary folder.
 temp=$(realpath "$(mktemp -d -p .)")

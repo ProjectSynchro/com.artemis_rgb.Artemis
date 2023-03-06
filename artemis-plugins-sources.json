@@ -274,17 +274,17 @@
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.app.runtime.linux-x64/6.0.12/microsoft.aspnetcore.app.runtime.linux-x64.6.0.12.nupkg",
-        "sha512": "f3adb56d2e0ed4427607f409665c1fc3ab43d6e97ba1897d8f43bba949bad178097121256841986c5cbae71a232d2b6e761f29ac833e082889e86703ebc1a69e",
+        "url": "https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.app.runtime.linux-x64/6.0.14/microsoft.aspnetcore.app.runtime.linux-x64.6.0.14.nupkg",
+        "sha512": "d10f0e53ac2872fdad7c2f5efc4ead7326ba92bf63ca7a4db473eb9940d0a39f513548ddf7ddfaf114c4724a4ef3b8a7180b8a51aa9a5ffc2938d81db8b4e473",
         "dest": "nuget-sources",
-        "dest-filename": "microsoft.aspnetcore.app.runtime.linux-x64.6.0.12.nupkg"
+        "dest-filename": "microsoft.aspnetcore.app.runtime.linux-x64.6.0.14.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/microsoft.netcore.app.runtime.linux-x64/6.0.12/microsoft.netcore.app.runtime.linux-x64.6.0.12.nupkg",
-        "sha512": "b08e107dd7bd74931caf8e576d8f41c3b5d471f438b54262eaae314828e8978b1e34178321075ca7a511100b964df2b4d2262d58e8b196a519ca0cdd41e19aa6",
+        "url": "https://api.nuget.org/v3-flatcontainer/microsoft.netcore.app.runtime.linux-x64/6.0.14/microsoft.netcore.app.runtime.linux-x64.6.0.14.nupkg",
+        "sha512": "0168110952af6f3c3de82385d3638ee9bf35df0dd7f51042f5a70acf26d56d0403a2f1c07fc96fd7327726c2d9b624fd244b7ed335907a94e30723c2e6b881eb",
         "dest": "nuget-sources",
-        "dest-filename": "microsoft.netcore.app.runtime.linux-x64.6.0.12.nupkg"
+        "dest-filename": "microsoft.netcore.app.runtime.linux-x64.6.0.14.nupkg"
     },
     {
         "type": "file",
@@ -428,122 +428,122 @@
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.core/1.0.0/rgb.net.core.1.0.0.nupkg",
-        "sha512": "fdbe3437967c7e0b49dadf513e6a509dda2eadfeae05d9e369728c8f9579f46519a5b4d9dbb35822ac1dc625eb5317880842a5cc2ce20efca04795ddc191f50d",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.core/2.0.0-prerelease.12/rgb.net.core.2.0.0-prerelease.12.nupkg",
+        "sha512": "1c25035b5bae960e5a49bcf9148779b442e0318a29258abcef23e36eeca4b01d9a06bcdbbaa7ff8c1ed68c0d71b961bf422e4a768ac8612b238d0828a5684b7c",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.core.1.0.0.nupkg"
+        "dest-filename": "rgb.net.core.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.asus/1.0.0/rgb.net.devices.asus.1.0.0.nupkg",
-        "sha512": "0ade206f2880d9ec4abf2951b37b1927771a51f01e6073ec8fc48e0802ef3de4560fdfd777e8c78efacc76918c4f6e98bd5f781c585fcf2323d4bdddee18d857",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.asus/2.0.0-prerelease.12/rgb.net.devices.asus.2.0.0-prerelease.12.nupkg",
+        "sha512": "dee3fdb4f84d73405389562ea34c5a57dad343fe9fc8c3bcfe99fe39820d9d9a862dabaa0dd4b8f0629077814f2bfa06d88c415de6afb39bd81d07552d1be9f6",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.devices.asus.1.0.0.nupkg"
+        "dest-filename": "rgb.net.devices.asus.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.coolermaster/1.0.0/rgb.net.devices.coolermaster.1.0.0.nupkg",
-        "sha512": "aa3519ba3729ae6ab4039cd57981dd756f77795f8421cee6144defe2012862d6d9bc4b84d022febd1774fef0270e79d393eca524754604acb947184d919464eb",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.coolermaster/2.0.0-prerelease.12/rgb.net.devices.coolermaster.2.0.0-prerelease.12.nupkg",
+        "sha512": "7a6dc091e8263c8cf8adbe61b6e5aedb50b7fd8d033104ca31c62e769bf678a3e7a685f4caa6b6fe9bd329c751903035475db5fb8cc048d976f1fb9d8bf4e08d",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.devices.coolermaster.1.0.0.nupkg"
+        "dest-filename": "rgb.net.devices.coolermaster.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.corsair/1.0.0/rgb.net.devices.corsair.1.0.0.nupkg",
-        "sha512": "530ec9e14a9861ec302bc62243442454fb3bddeb71b513a2dee230dc00f2afa260e1c499795a56b514e623183f68d3666f91b684333293223caea77e4fcdc89c",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.corsair/2.0.0-prerelease.12/rgb.net.devices.corsair.2.0.0-prerelease.12.nupkg",
+        "sha512": "a2aeab1a7dadaa83ed86df49722b06e1df683d58d84897528004fa6d6a9caba1175b3e72876f3a7248923248ac82421238ea339f3238c58c47caf139805ef5bf",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.devices.corsair.1.0.0.nupkg"
+        "dest-filename": "rgb.net.devices.corsair.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.debug/1.0.0/rgb.net.devices.debug.1.0.0.nupkg",
-        "sha512": "961db7468e0b6e7f5382031e257fabc642650ac6775f5a848d93a376ecad344c20c3f10ccb5a534745db7bb7aeeb74b4ff73185b7139670997fe61c699395ed8",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.debug/2.0.0-prerelease.12/rgb.net.devices.debug.2.0.0-prerelease.12.nupkg",
+        "sha512": "66fe420b1663acd92a4442c0e833a75d2bf83347d50d0fa6cc90cd928b0d40780b6d60e96c2ebfbe90db6695b356b7b9b4e69733da5032c813b7e63291170479",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.devices.debug.1.0.0.nupkg"
+        "dest-filename": "rgb.net.devices.debug.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.dmx/1.0.0/rgb.net.devices.dmx.1.0.0.nupkg",
-        "sha512": "3da1cef9662de015caac5b8ad3a56b9d823150a7fa9ae116fe0eb17e1f2758ced8a880f4699436284c942d61d0cccee516e74a8c5fe83a8f86d4f5fd7ccc7833",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.dmx/2.0.0-prerelease.12/rgb.net.devices.dmx.2.0.0-prerelease.12.nupkg",
+        "sha512": "e9baeca1ba1390b642c15052cffe59fde1f083854254dabcfb34dcaa43f58573854f0cc868ae59f2d06b918414a5063b88ac2069afc1c4d618e4445b1a67e4b9",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.devices.dmx.1.0.0.nupkg"
+        "dest-filename": "rgb.net.devices.dmx.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.logitech/1.0.0/rgb.net.devices.logitech.1.0.0.nupkg",
-        "sha512": "9ec4ebd0a1ad9a36f4d439829e2ed4c0ed8c2f700c90b86b8c985299ef7200e93f4bce2940194161af862efdaf881f5a8b3b772adfff6ebe07bb447adb661e51",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.logitech/2.0.0-prerelease.12/rgb.net.devices.logitech.2.0.0-prerelease.12.nupkg",
+        "sha512": "23a0a91759d99795da15f63d6e9a08a684091c1a37e1a70e51f8eca2775880c9131603ec342fb3c8f44d9598d89bcb80cbcb32342cdd759a48abca829a4789c4",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.devices.logitech.1.0.0.nupkg"
+        "dest-filename": "rgb.net.devices.logitech.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.msi/1.0.0/rgb.net.devices.msi.1.0.0.nupkg",
-        "sha512": "30d41012aeebc269ebf852279b9661e44409533601e202a11919204df98c639711a6afb9d19aae3ff9dbcd9cb94becca9374e30c639faaca4ffb55994d5b3c91",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.msi/2.0.0-prerelease.12/rgb.net.devices.msi.2.0.0-prerelease.12.nupkg",
+        "sha512": "5cff0670b13f631baf6b1ded7e4db413f6eb2298ce9c98c4c19f898a2943531bb4b3ef3475e6d40a6f8f47f2b88a8e2499535c2af3da4ffbf74af38e3b4a374e",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.devices.msi.1.0.0.nupkg"
+        "dest-filename": "rgb.net.devices.msi.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.novation/1.0.0/rgb.net.devices.novation.1.0.0.nupkg",
-        "sha512": "b641b342d524acf777189f38286ffcdbd44374794dac137224f3f5b6c29792501381556e336af24c74dc02178ef24e7b007e60484ee8c792fd2916bfdae8f4cd",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.novation/2.0.0-prerelease.12/rgb.net.devices.novation.2.0.0-prerelease.12.nupkg",
+        "sha512": "ed75c44dc9b3870f8aab9db713b7c802b03e3aeb93da7c5004718237445a5088a135decec08ff0d572c3caaa17f4642f32342ee7fc25e79c986274766c0374c4",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.devices.novation.1.0.0.nupkg"
+        "dest-filename": "rgb.net.devices.novation.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.openrgb/1.0.0/rgb.net.devices.openrgb.1.0.0.nupkg",
-        "sha512": "3b1addd893d733e98ceabd6daf20df11f1525719e3a77d27860b35885dbdb6503ce010e2bfcabff8a55352759ce21cd0b7a710966521234b211e05ec6d8e2991",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.openrgb/2.0.0-prerelease.12/rgb.net.devices.openrgb.2.0.0-prerelease.12.nupkg",
+        "sha512": "bfc6a5f23d066c3cff0d9ca7baad6340263e1e61a71f1db7c8a5cc41b88c7770e7dca482d3031ba1eb344432d39de2e0e3a59ef4e1010f28d55f69a66d5c247d",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.devices.openrgb.1.0.0.nupkg"
+        "dest-filename": "rgb.net.devices.openrgb.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.picopi/1.0.0/rgb.net.devices.picopi.1.0.0.nupkg",
-        "sha512": "df4ce7f3bcb93d6f9f5f2d8f488302c05c4cca59d2615150db530a54fd3fa1de968dc8c1e60d818496462edb02f79effcd898a5ab7bc6c3db13f6637847df185",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.picopi/2.0.0-prerelease.12/rgb.net.devices.picopi.2.0.0-prerelease.12.nupkg",
+        "sha512": "a3313884ead735505159b9bd97ec1d4e37c3e2eda19cd21724934dccc0129eff13ffbbe2afe6ee827e83745e150e07414c0fbc779f10ad9c4ab28fe084e93629",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.devices.picopi.1.0.0.nupkg"
+        "dest-filename": "rgb.net.devices.picopi.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.razer/1.0.0/rgb.net.devices.razer.1.0.0.nupkg",
-        "sha512": "acab2b05672378d6212d34586a2bf4f87c226e9f6621b587ca067aef3a5e7d0604eef8e77b8bbf51dd52471392b542e406da82769dba53b5cbf58b732f605064",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.razer/2.0.0-prerelease.12/rgb.net.devices.razer.2.0.0-prerelease.12.nupkg",
+        "sha512": "6ea2005ee5691d75c7edcfbe71e16ef8992b0d5d844e47cf57dc88ddecc3fea744c355cc694573a283b78630e346d257ff6f380c4ff62701e4c42cb78ccebd4e",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.devices.razer.1.0.0.nupkg"
+        "dest-filename": "rgb.net.devices.razer.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.steelseries/1.0.0/rgb.net.devices.steelseries.1.0.0.nupkg",
-        "sha512": "d4dc8f6f19401595d46826840ee3b88835686bc2aa7699bf02003c238f2333201a8c765d4e4583939dfa96be7f99b06607bf8ae859ca1f6cf53342341e8e2c29",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.steelseries/2.0.0-prerelease.12/rgb.net.devices.steelseries.2.0.0-prerelease.12.nupkg",
+        "sha512": "ff0a17b1fa708a18e229da5b2bb75c1ac025498b5291d40c15af711f23efc123d98eaf326857733f50f64251d3e363167c3a5b237f6aa290253105c8986e8a7a",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.devices.steelseries.1.0.0.nupkg"
+        "dest-filename": "rgb.net.devices.steelseries.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.wooting/1.0.0/rgb.net.devices.wooting.1.0.0.nupkg",
-        "sha512": "c3b408cf05f8d3c99a3c9c0a77b342d2a378187fe0e1acd55a627d573327a88ca92bfd3bd18d60e45f405da096e8df4ffc9ee798bfa0a64c58a16eca36e1d420",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.wooting/2.0.0-prerelease.12/rgb.net.devices.wooting.2.0.0-prerelease.12.nupkg",
+        "sha512": "9fb4057dc6f96d00a188c9107e0ff02c5c65fefbe832a4826fe1a657d4fbe91e1f0427d803dd1fdb58b4e5bab10c8e159f0687ab2d682725809012567977fc7b",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.devices.wooting.1.0.0.nupkg"
+        "dest-filename": "rgb.net.devices.wooting.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.ws281x/1.0.0/rgb.net.devices.ws281x.1.0.0.nupkg",
-        "sha512": "1741637c1df14c42f9779f0de36d2647095b7f9ebdf031aab780bc3e38d584054d64cc3a5375cb842cf6fca99d173021e4116a99b93d04a4bd84f95b0e567fbc",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.devices.ws281x/2.0.0-prerelease.12/rgb.net.devices.ws281x.2.0.0-prerelease.12.nupkg",
+        "sha512": "a87e665dd0b8ac9715237a6a59e24f361249dd83816e311abf29958363c3bbf599ed54433bf0d8ed8fee54eb5b54aaa127c3079d981363017d421a0279426a4b",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.devices.ws281x.1.0.0.nupkg"
+        "dest-filename": "rgb.net.devices.ws281x.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.hid/1.0.0/rgb.net.hid.1.0.0.nupkg",
-        "sha512": "2dddde710f25472b6c92643729c29ecc36b4e4ffb5c607a0da7005dd2e7f7e924aa3ec0a8a49651fb784a20db842d7a770e981abe581e8dfb257dd9d5c67aafc",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.hid/2.0.0-prerelease.12/rgb.net.hid.2.0.0-prerelease.12.nupkg",
+        "sha512": "4b2ce8c8daba8105271d1ba1acd81324dddb78910216074a658b78442129e6d6d74d28c94b70c87584d455eff69a25614d38083e4276224b02739d98c835dd9e",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.hid.1.0.0.nupkg"
+        "dest-filename": "rgb.net.hid.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.layout/1.0.0/rgb.net.layout.1.0.0.nupkg",
-        "sha512": "d1260d8d9590519740bcf12de7799f9d9ec4c38f139dfaf74d26cc6ec3ea716eee70363323f24278c531dc11e380e1ff8745bd7efe9d9b19a6f7a46bb5869557",
+        "url": "https://api.nuget.org/v3-flatcontainer/rgb.net.layout/2.0.0-prerelease.12/rgb.net.layout.2.0.0-prerelease.12.nupkg",
+        "sha512": "151653b7663aaafebfedb4f3dfb79e64a4fb60cc1810090fa08c3506e7c44e0399fbb4a55b0d173ca0c8f2fe2ef1280dac9d915c0f4954b55b9029f49d316c88",
         "dest": "nuget-sources",
-        "dest-filename": "rgb.net.layout.1.0.0.nupkg"
+        "dest-filename": "rgb.net.layout.2.0.0-prerelease.12.nupkg"
     },
     {
         "type": "file",
@@ -610,10 +610,10 @@
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/screencapture.net/1.1.0/screencapture.net.1.1.0.nupkg",
-        "sha512": "061a9324b3f49363a2949ff5ba06849b5026186e63aba52d9571b222700b1ac4bf2519fbd2fff33512c2fba127bf0efeec793e189f64f35a01f0e8aabe98f6bc",
+        "url": "https://api.nuget.org/v3-flatcontainer/screencapture.net/1.2.0/screencapture.net.1.2.0.nupkg",
+        "sha512": "9637b46deb8c6ec359c51bd3f6c5264efcf94b1b02d6ff5214f051b4e397cc60596538ec0a61512fb5593a83e1c10d1e9cfa3f1f3f15f48010160fc2e98cf37c",
         "dest": "nuget-sources",
-        "dest-filename": "screencapture.net.1.1.0.nupkg"
+        "dest-filename": "screencapture.net.1.2.0.nupkg"
     },
     {
         "type": "file",
