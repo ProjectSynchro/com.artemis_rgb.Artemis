@@ -9,8 +9,8 @@ usage() {
    echo "usage: $(basename "$0") [-v] <verbose output> -a <update Artemis nuget sources> -p <update Artemis.Plugins nuget sources> -d <TODO: update dotnet runtime sources>"
    cat <<EOF
 Basic source updater script for building the Artemis Flatpak.
-This script calls on JSONMerger.py and builder-tools/dotnet/flatpak-dotnet-generator.py.
-Requires python, flatpak (with correct SDKs installed for flatpak-dotnet-generator), and git.
+This script calls on builder-tools/dotnet/flatpak-dotnet-generator.py.
+Requires python, org.freedesktop.Platform//23.08, org.freedesktop.Sdk//23.08, org.freedesktop.Sdk.Extension.dotnet7//23.08 flatpaks, and git.
 EOF
    exit 1
 }
@@ -36,10 +36,10 @@ while getopts vapd OPTION "$@"; do
 done
 
 # Update these to follow manifest
-dotnet='6'
-freedesktop='22.08'
-artemis_hash='66fc2988ae727cbcb1f273b3e9112cd5ca9990fc'
-artemis_plugins_hash='9fbf1f9f33dac69ede804607dc278172cb9f5b1f'
+dotnet='7'
+freedesktop='23.08'
+artemis_hash='ce927d320f26d0996f3269a3c2c227ad74bdb6da'
+artemis_plugins_hash='f671ae79f7756fcfb90979b5f109a4f9cd3a0298'
 
 # Create temporary folder.
 temp=$(realpath "$(mktemp -d -p .)")

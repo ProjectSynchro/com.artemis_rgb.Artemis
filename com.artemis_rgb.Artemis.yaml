@@ -1,9 +1,9 @@
 id: 'com.artemis_rgb.Artemis'
 runtime: org.freedesktop.Platform
-runtime-version: '22.08'
+runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions: 
-  - org.freedesktop.Sdk.Extension.dotnet6
+  - org.freedesktop.Sdk.Extension.dotnet7
 
 command: Artemis.UI.Linux
 finish-args:
@@ -18,8 +18,8 @@ modules:
     build-commands:
       - ./build.sh
     build-options:
-      append-path: "/usr/lib/sdk/dotnet6/bin"
-      append-ld-library-path: "/usr/lib/sdk/dotnet6/lib"
+      append-path: "/usr/lib/sdk/dotnet7/bin"
+      append-ld-library-path: "/usr/lib/sdk/dotnet7/lib"
       env:
         PKG_CONFIG_PATH: "/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/sdk/dotnet6/lib/pkgconfig"
       arch:
@@ -42,11 +42,11 @@ modules:
       - type: git
         url: https://github.com/Artemis-RGB/Artemis.git
         dest: "Artemis"
-        commit: 6f7f49617525ede19bdb880ba0851315c6110109
+        commit: ce927d320f26d0996f3269a3c2c227ad74bdb6da
       - type: git
         url: https://github.com/Artemis-RGB/Artemis.Plugins.git
         dest: "Artemis.Plugins"
-        commit: 06efefe2b31fa4e16a200fbc39d99ed6962ddcf0
+        commit: f671ae79f7756fcfb90979b5f109a4f9cd3a0298
       - artemis-sources.json
       - artemis-plugins-sources.json
       - dotnet-runtime-sources.json
