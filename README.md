@@ -34,6 +34,6 @@ flatpak-builder --user --install --force-clean build-dir com.artemis_rgb.Artemis
 
 ### Using a Wooting? 
 
-Enable the `device=all`` permission in Flatseal, or by typing the following in a console: 
+Enable the `device=all` permission in Flatseal, or by typing the following in a console: 
 
 `flatpak override com.artemis_rgb.Artemis --device=all`
