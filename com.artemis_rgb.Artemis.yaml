@@ -7,12 +7,29 @@ sdk-extensions:
 
 command: Artemis.UI.Linux
 finish-args:
-  - --socket=x11
   - --socket=session-bus
+  - --socket=x11
+  - --device=dri
   - --share=ipc
   - --share=network
 
 modules:
+
+  - shared-modules/libusb/libusb.json
+
+  - name: libhidapi
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/libusb/hidapi.git
+        tag: hidapi-0.14.0
+        commit: d3013f0af3f4029d82872c1a9487ea461a56dee4
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/libusb/hidapi/releases/latest
+          tag-query: .tag_name
+          timestamp-query: .published_at
+
   - name: artemis
     buildsystem: simple
     build-commands:
@@ -21,7 +38,7 @@ modules:
       append-path: "/usr/lib/sdk/dotnet7/bin"
       append-ld-library-path: "/usr/lib/sdk/dotnet7/lib"
       env:
-        PKG_CONFIG_PATH: "/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/sdk/dotnet6/lib/pkgconfig"
+        PKG_CONFIG_PATH: "/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/sdk/dotnet7/lib/pkgconfig"
       arch:
         aarch64:
           env: 
@@ -42,11 +59,13 @@ modules:
       - type: git
         url: https://github.com/Artemis-RGB/Artemis.git
         dest: "Artemis"
-        commit: ce927d320f26d0996f3269a3c2c227ad74bdb6da
+        commit: 524296e4e9891a1c4ccedd5f0dcfcbe54b0c8006
       - type: git
         url: https://github.com/Artemis-RGB/Artemis.Plugins.git
         dest: "Artemis.Plugins"
-        commit: f671ae79f7756fcfb90979b5f109a4f9cd3a0298
+        commit: e17d1514ec2f844a4673520d3fd2d9cbd9489d12
+      - type: patch
+        path: disable-update.patch
       - artemis-sources.json
       - artemis-plugins-sources.json
       - dotnet-runtime-sources.json

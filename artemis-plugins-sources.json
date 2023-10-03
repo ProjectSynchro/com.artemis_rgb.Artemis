@@ -869,10 +869,10 @@
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/skiasharp/2.88.5/skiasharp.2.88.5.nupkg",
-        "sha512": "f8aa216bb28995dc7f6c9c11aa88365908ef4803f32c2f1c101b97ae6e55d7de64812de3abb94ffecc27d44f2344aefdca58d432c805a6f0c467ecbd4106f229",
+        "url": "https://api.nuget.org/v3-flatcontainer/skiasharp/2.88.6/skiasharp.2.88.6.nupkg",
+        "sha512": "5b989f52d9e7efa557bf60e13c1ba329b63670bc66d07bf237e2c8f9bdf28634eeb1e3a735c17c0f7d5b6cb8e290bda0b139540a8b0b99343367f9710f81dffd",
         "dest": "nuget-sources",
-        "dest-filename": "skiasharp.2.88.5.nupkg"
+        "dest-filename": "skiasharp.2.88.6.nupkg"
     },
     {
         "type": "file",
@@ -883,10 +883,10 @@
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/skiasharp.nativeassets.macos/2.88.5/skiasharp.nativeassets.macos.2.88.5.nupkg",
-        "sha512": "ff8a9eec672921fef5cbb9b08719d9f834a78547dad0dd5f4c2dcfc6874673e94a672141eff57057f7fef5c0d8dcfbb2712099d3470b5d4403889c840c0a8a69",
+        "url": "https://api.nuget.org/v3-flatcontainer/skiasharp.nativeassets.macos/2.88.6/skiasharp.nativeassets.macos.2.88.6.nupkg",
+        "sha512": "a9abf36aadd48c8a9e0ea35f95acdbe3a354091b37f97c1df97499213894f662e798687bad36da71fcfa05b6fdbc68aaff2e8a8ddbeec4ca2820bfe7cf5a9ed7",
         "dest": "nuget-sources",
-        "dest-filename": "skiasharp.nativeassets.macos.2.88.5.nupkg"
+        "dest-filename": "skiasharp.nativeassets.macos.2.88.6.nupkg"
     },
     {
         "type": "file",
@@ -897,10 +897,10 @@
     },
     {
         "type": "file",
-        "url": "https://api.nuget.org/v3-flatcontainer/skiasharp.nativeassets.win32/2.88.5/skiasharp.nativeassets.win32.2.88.5.nupkg",
-        "sha512": "ca16699ca37c32f807582d8398d2a812b3c5b380642ec7c7724da782d4ef0eda2478b6482860ab03e2ddbc25e3d2fb144366e281151bb2ff46140b5fe5db6c82",
+        "url": "https://api.nuget.org/v3-flatcontainer/skiasharp.nativeassets.win32/2.88.6/skiasharp.nativeassets.win32.2.88.6.nupkg",
+        "sha512": "02087547abd840806105270d43cc3a61b417f331192498571e2cff1382dfd15a1bf6b1552610c7579bf06da69b6e9a80b042ae980d0475da8acf3f7dab7334f4",
         "dest": "nuget-sources",
-        "dest-filename": "skiasharp.nativeassets.win32.2.88.5.nupkg"
+        "dest-filename": "skiasharp.nativeassets.win32.2.88.6.nupkg"
     },
     {
         "type": "file",

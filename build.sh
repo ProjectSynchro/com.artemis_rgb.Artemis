@@ -78,14 +78,19 @@ PluginProjects=$(find "Artemis.Plugins/src" -type f -name "*.csproj")
 for PluginProjFile in $PluginProjects; do
     # Build each of the found project files.
     Name=$(basename -s .csproj "$PluginProjFile")
-    echo "Building Plugin $Name"
-    Output="$PluginOutDir/$Name"
-    dotnet publish --configuration Release --runtime "$RUNTIME" --source ./nuget-sources --output "$Output" --no-self-contained "$PluginProjFile";
-    # Zip the output and place it inside of the staging directory for app deployment
-    pushd "$Output"
-        zip -r "$Name.zip" .
-    popd
-    mv "$PluginOutDir/$Name/$Name.zip" "$PluginStagingDir"
+    if [[ $Name == *"Ambilight"* ]]; then
+        echo "Skipping build of Plugin $Name due to bug."
+    else
+        echo "Building Plugin $Name"
+        Output="$PluginOutDir/$Name"
+        dotnet publish --configuration Release --runtime "$RUNTIME" --source ./nuget-sources --output "$Output" --no-self-contained "$PluginProjFile";
+        # Zip the output and place it inside of the staging directory for app deployment
+        pushd "$Output"
+            zip -r "$Name.zip" .
+        popd
+        mv "$PluginOutDir/$Name/$Name.zip" "$PluginStagingDir"
+    fi
+
 done
 
 echo "Staging Artemis Flatpak"
