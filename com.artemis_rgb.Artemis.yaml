@@ -59,11 +59,11 @@ modules:
       - type: git
         url: https://github.com/Artemis-RGB/Artemis.git
         dest: "Artemis"
-        commit: 524296e4e9891a1c4ccedd5f0dcfcbe54b0c8006
+        commit: ebf40992bcdd75d6024d4bce25410511cbf88287
       - type: git
         url: https://github.com/Artemis-RGB/Artemis.Plugins.git
         dest: "Artemis.Plugins"
-        commit: e17d1514ec2f844a4673520d3fd2d9cbd9489d12
+        commit: 3946a5ed3a365b399674b3a31ed8dd8d59797af8
       - type: patch
         path: disable-update.patch
       - artemis-sources.json
