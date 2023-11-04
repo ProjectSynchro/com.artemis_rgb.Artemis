@@ -1,7 +1,6 @@
-[submodule "update/builder-tools"]
-	path = builder-tools
-	url = https://github.com/ProjectSynchro/flatpak-builder-tools.git
-	branch = pimped-out-runtimes
 [submodule "shared-modules"]
 	path = shared-modules
 	url = https://github.com/flathub/shared-modules.git
+[submodule "builder-tools"]
+	path = builder-tools
+	url = https://github.com/ProjectSynchro/flatpak-builder-tools.git
