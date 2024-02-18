@@ -5,7 +5,7 @@
 
 This is a repository for packaging [Artemis](https://artemis-rgb.com) as a Flatpak, as per Flatpak's best practices.
 
-
+If you'd like to build from source, you can use the [`source-build`](https://github.com/ProjectSynchro/com.artemis_rgb.Artemis/tree/source-build) branch.
 
 ### What is in here?
 
