@@ -2,8 +2,6 @@ id: 'com.artemis_rgb.Artemis'
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
-sdk-extensions: 
-  - org.freedesktop.Sdk.Extension.dotnet7
 
 command: Artemis.UI.Linux
 finish-args:
@@ -19,6 +17,9 @@ modules:
 
   - name: libhidapi
     buildsystem: cmake-ninja
+    cleanup:
+      - /include
+      - /lib/pkgconfig
     sources:
       - type: git
         url: https://github.com/libusb/hidapi.git
@@ -33,39 +34,33 @@ modules:
   - name: artemis
     buildsystem: simple
     build-commands:
-      - ./build.sh
-    build-options:
-      append-path: "/usr/lib/sdk/dotnet7/bin"
-      append-ld-library-path: "/usr/lib/sdk/dotnet7/lib"
-      env:
-        PKG_CONFIG_PATH: "/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/sdk/dotnet7/lib/pkgconfig"
-      arch:
-        aarch64:
-          env: 
-            RUNTIME: "linux-arm64"
-        x86_64:
-          env: 
-            RUNTIME: "linux-x64"
+      - install -Dm644 com.artemis_rgb.Artemis.metainfo.xml /app/share/metainfo/com.artemis_rgb.Artemis.metainfo.xml
+      - install -Dm644 com.artemis_rgb.Artemis.desktop /app/share/applications/com.artemis_rgb.Artemis.desktop
+      - chmod +x Artemis.UI.Linux
+      - |
+        pushd Icons
+        find . -maxdepth 1 -mindepth 1 -type d -print0 | while IFS= read -r -d '' folder
+        do
+            install -Dm644 "$folder/apps/artemis.png" "/app/share/icons/hicolor/$folder/apps/com.artemis_rgb.Artemis.png"
+        done
+        popd
+      - mkdir /app/bin
+      - mv * /app/bin
+
     sources:
-      - type: file
-        path: build.sh
       - type: file
         path: com.artemis_rgb.Artemis.desktop
       - type: file
         path: com.artemis_rgb.Artemis.metainfo.xml
-      - type: dir
-        path: icons
-        dest: icons
-      - type: git
-        url: https://github.com/Artemis-RGB/Artemis.git
-        dest: "Artemis"
-        commit: 1f3f213405e8653887177dd63ec3d479c6917eb1
-      - type: git
-        url: https://github.com/Artemis-RGB/Artemis.Plugins.git
-        dest: "Artemis.Plugins"
-        commit: 395f9b64480b5d58fcc20508120a4994bfc0a564
+      - type: archive
+        archive-type: zip
+        url: https://updating.artemis-rgb.com/api/artifacts/1253482852
+        dest-filename: artemis-release.zip
+        sha512: 78c09bc8f978ba2f695ef014dfc37fc2f53229b9d1607771b602a79907af0e342279f475f29a7a471bdb36a2aaf5ccbc6e63304c77fd0b8fd0350205bde7cc7d
+        strip-components: 0
+        x-checker-data:
+          type: rotating-url
+          url: https://updating.artemis-rgb.com/api/artifacts/latest/master/linux
+          pattern: https://updating.artemis-rgb.com/api/artifacts/([0-9.]+)
       - type: patch
         path: disable-update.patch
-      - artemis-sources.json
-      - artemis-plugins-sources.json
-      - dotnet-runtime-sources.json

@@ -1,36 +1,61 @@
-diff --git a/Artemis/src/Artemis.UI.Linux/ApplicationStateManager.cs b/Artemis/src/Artemis.UI.Linux/ApplicationStateManager.cs
-index e580f5fd..226fb289 100644
---- a/Artemis/src/Artemis.UI.Linux/ApplicationStateManager.cs
-+++ b/Artemis/src/Artemis.UI.Linux/ApplicationStateManager.cs
-@@ -140,23 +140,9 @@ public class ApplicationStateManager
-         //todo
-     }
-     
-     private void UtilitiesOnUpdateRequested(object? sender, UpdateEventArgs e)
-     {
--        List<string> argsList = new(StartupArguments);
--        if (e.Silent && !argsList.Contains("--minimized"))
--            argsList.Add("--minimized");
+--- a/Scripts/update.sh     2024-02-17 14:04:02.000000000 -0500
++++ b/Scripts/update.sh     2024-02-18 13:47:53.479829537 -0500
+@@ -1,56 +1,4 @@
+ #!/bin/bash
+ 
+-sourceDirectory=$1
+-destinationDirectory=$2
+-artemisArgs=$3
 -
--        // Retain startup arguments after update by providing them to the script
--        string script = Path.Combine(Constants.UpdatingFolder, "installing", "Scripts", "update.sh");
--        string source = $"\"{Path.Combine(Constants.UpdatingFolder, "installing")}\"";
--        string destination = $"\"{Constants.ApplicationFolder}\"";
--        string args = argsList.Any() ? string.Join(' ', argsList) : "";
+-# Wait for up to 10 seconds for the Artemis process to exit
+-i=0
+-while [ $i -le 10 ]
+-do
+-    if ! pgrep -x "Artemis.UI.Linux" > /dev/null
+-    then
+-        break
+-    fi
+-    sleep 1
+-    i=$((i+1))
+-done
 -
--        RunScriptWithOutputFile(script, $"{source} {destination} {args}", Path.Combine(Constants.DataFolder, "update-log.txt"));
+-# If the Artemis process is still running, kill it
+-if pgrep -x "Artemis.UI.Linux" > /dev/null
+-then
+-    pkill -x "Artemis.UI.Linux"
+-fi
 -
--        // Lets try a graceful shutdown, the script will kill if needed
--        if (Application.Current?.ApplicationLifetime is IControlledApplicationLifetime controlledApplicationLifetime)
--            Dispatcher.UIThread.Post(() => controlledApplicationLifetime.Shutdown());
-+		return;
-     }
-     
-     private static void RunScriptWithOutputFile(string script, string arguments, string outputFile)
-@@ -170,4 +156,4 @@ public class ApplicationStateManager
-         };
-         Process.Start(info);
-     }
--}
-\ No newline at end of file
-+}
+-# Check if the destination directory exists
+-if [ ! -d "$destinationDirectory" ]
+-then
+-    echo "Destination directory does not exist"
+-    exit 1
+-fi
+-
+-# Clear the destination directory but don't remove it
+-echo "Cleaning up old version where needed"
+-rm -rf "${destinationDirectory:?}/"*
+-
+-# Move the contents of the source directory to the destination directory
+-echo "Installing new files"
+-mv "$sourceDirectory"/* "$destinationDirectory"
+-
+-# Remove the now empty source directory
+-rmdir "$sourceDirectory"
+-
+-# Ensure the executable is executable
+-chmod +x "$destinationDirectory/Artemis.UI.Linux"
+-
+-echo "Finished! Restarting Artemis"
+-sleep 1
+-
+-# When finished, start Artemis again
+-
+-# quoting here breaks stuff, all arguments count as 1
+-# shellcheck disable=SC2086 
+-"$destinationDirectory/Artemis.UI.Linux" $artemisArgs &
+-
+-
+-
++echo "Skipping since we are in a Flatpak"
++exit 0
