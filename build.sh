@@ -97,7 +97,7 @@ echo "Staging Artemis Flatpak"
 
 # Install Metainfo and desktop files
 install -Dm644 com.artemis_rgb.Artemis.metainfo.xml /app/share/metainfo/com.artemis_rgb.Artemis.metainfo.xml
-install -Dm644 com.artemis_rgb.Artemis.desktop /app/share/applications/com.artemis_rgb.Artemis.metainfo.desktop
+install -Dm644 com.artemis_rgb.Artemis.desktop /app/share/applications/com.artemis_rgb.Artemis.desktop
 
 # Install
 pushd icons
