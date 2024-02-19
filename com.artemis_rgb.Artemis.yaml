@@ -47,8 +47,8 @@ modules:
         x-checker-data:
           type: json
           url: https://api.github.com/repos/WootingKb/wooting-analog-sdk/releases/latest
-          version-query: .tag_name | sub(\"^jq-\"; \"\")
-          url-query: .assets[] | select(.name==\"jq-\" + $version + \"unknown-linux-gnu.tar.gz\") | .browser_download_url
+          version-query: .tag_name
+          url-query: .assets[] | select(.name|endswith("-unknown-linux-gnu.tar.gz")) | .browser_download_url
 
   - name: artemis
     buildsystem: simple
