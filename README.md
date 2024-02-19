@@ -25,8 +25,8 @@ Outlying issues are tracked in the [issue tracker](https://github.com/ProjectSyn
 First clone this repo and change directory into it, then:
 
 ```sh
-## Install the freedesktop SDK, runtime and the dotnet 7 SDK extension for the freedesktop SDK
-flatpak install flathub org.freedesktop.Platform//23.08 org.freedesktop.Sdk//23.08 org.freedesktop.Sdk.Extension.dotnet7//23.08
+## Install the freedesktop SDK and runtime 
+flatpak install flathub org.freedesktop.Platform//23.08 org.freedesktop.Sdk//23.08
 
 ## Install flatpak-builder for your distro and run this, it will locally install the Flatpak for you.
 flatpak-builder --user --install --force-clean build-dir com.artemis_rgb.Artemis.yaml
