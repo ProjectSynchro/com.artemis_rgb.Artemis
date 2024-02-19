@@ -4,6 +4,8 @@ runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
 
 command: Artemis.UI.Linux
+args:
+  - --channel=none
 finish-args:
   - --socket=session-bus
   - --socket=x11
