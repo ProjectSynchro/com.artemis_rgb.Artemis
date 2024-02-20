@@ -1,4 +1,4 @@
-id: 'com.artemis_rgb.Artemis'
+id: com.artemis_rgb.Artemis
 runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
@@ -48,7 +48,8 @@ modules:
           type: json
           url: https://api.github.com/repos/WootingKb/wooting-analog-sdk/releases/latest
           version-query: .tag_name
-          url-query: .assets[] | select(.name|endswith("-unknown-linux-gnu.tar.gz")) | .browser_download_url
+          url-query: .assets[] | select(.name|endswith("-unknown-linux-gnu.tar.gz"))
+            | .browser_download_url
 
   - name: artemis
     buildsystem: simple
@@ -73,9 +74,9 @@ modules:
         path: com.artemis_rgb.Artemis.metainfo.xml
       - type: archive
         archive-type: zip
-        url: https://updating.artemis-rgb.com/api/artifacts/1253482852
+        url: https://updating.artemis-rgb.com/api/artifacts/1257736635
         dest-filename: artemis-release.zip
-        sha512: 78c09bc8f978ba2f695ef014dfc37fc2f53229b9d1607771b602a79907af0e342279f475f29a7a471bdb36a2aaf5ccbc6e63304c77fd0b8fd0350205bde7cc7d
+        sha512: df217c0e3d9120f6a0a51b4f30d0c230c362d8021b959f592a1755c47b4e6b526ae0f6c566949035fa640dfa5b841e750345723413b5278e19b1d42285d6c865
         strip-components: 0
         x-checker-data:
           type: rotating-url
