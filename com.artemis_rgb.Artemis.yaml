@@ -74,9 +74,9 @@ modules:
         path: com.artemis_rgb.Artemis.metainfo.xml
       - type: archive
         archive-type: zip
-        url: https://updating.artemis-rgb.com/api/artifacts/1257736635
+        url: https://updating.artemis-rgb.com/api/artifacts/1273404202
         dest-filename: artemis-release.zip
-        sha512: df217c0e3d9120f6a0a51b4f30d0c230c362d8021b959f592a1755c47b4e6b526ae0f6c566949035fa640dfa5b841e750345723413b5278e19b1d42285d6c865
+        sha512: f60f2d0ed419a36553d341f8252ef7da18358adf05f0c7c0152f9a6bda3044d18e26cfba0a29b016b69a0ab00b77c4b77d6760cbe536dec3cee00d6bf5ce5cbb
         strip-components: 0
         x-checker-data:
           type: rotating-url
