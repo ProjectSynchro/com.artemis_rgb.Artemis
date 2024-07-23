@@ -53,8 +53,11 @@
 <content_rating type="oars-1.1"/>
 
 <releases>
-    <release version="1696899682" date="2024-07-12">
+    <release version="1725812566" date="2024-07-22">
       <description></description>
+    </release>
+    <release version="1696899682" date="2024-07-12">
+      <description/>
     </release>
     <release version="1669085814" date="2024-07-04">
       <description/>
