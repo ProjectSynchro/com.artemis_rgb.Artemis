@@ -41,8 +41,8 @@ modules:
       - install -Dm755 wrapper/sdk/libwooting_analog_plugin.so /app/local/share/WootingAnalogPlugins/wooting-analog-plugin/libwooting_analog_plugin.so
     sources:
       - type: archive
-        url: https://github.com/WootingKb/wooting-analog-sdk/releases/download/v0.7.5/wooting-analog-sdk-v0.7.5-x86_64-unknown-linux-gnu.tar.gz
-        sha512: 7615ee2b250e9e6eb25fd36711f7053a2e0fda55e1d172b5b1482dedcec4e2da67a1ab40110efe808981b99f14f6b6378a793c9b33dd196bf0e8190786893da2
+        url: https://github.com/WootingKb/wooting-analog-sdk/releases/download/v0.8.0/wooting-analog-sdk-v0.8.0-x86_64-unknown-linux-gnu.tar.gz
+        sha512: bb93460de0ad4096ba160469945f2ba0a35a081b604627059905a48f5d73ac68488fa568b9d7980be46778aa5be79ae3cb164f000c0c5f67cce29f4b45128663
         strip-components: 0
         x-checker-data:
           type: json
