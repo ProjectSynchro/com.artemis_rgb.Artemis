@@ -39,4 +39,10 @@ First clone this repo and change directory into it, then:
 
 If the keyboard doesn't work, try enabling the `device=all` permission in Flatseal, or by typing the following in a console: 
 
-`flatpak override com.artemis_rgb.Artemis --device=all`
+`flatpak override com.artemis_rgb.Artemis --user --device=all`
+
+Want to use analog input? 
+Install the analog plugin as according to the section on [this wiki page](https://wiki.artemis-rgb.com/guides/user/devices/wooting)
+
+Allow read access to the following path in Flatseal, or by typing the following in a console:
+`flatpak override com.artemis_rgb.Artemis --user --filesystem=/usr/local/share/WootingAnalogPlugins:ro`
