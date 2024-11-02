@@ -28,7 +28,6 @@ First clone this repo and change directory into it, then:
 1. Clone this repo
 2. Install `flatpak`, `flatpak-builder` and `yq` for your distro
 3. Run the build script with: `./local-build.sh`
-4. Install the test build with: `flatpak install ./com.artemis_rgb.Artemis.flatpak`
 
 ### Getting dotnet sources manually
 1. Clone this repo
