@@ -3,7 +3,7 @@
 set -e
 
 # Extract variables from the manifest
-manifest="com.artemis_rgb.Artemis.yml"  # Replace with the path to your manifest file
+manifest="com.artemis_rgb.Artemis.yml"
 
 # Ensure yq is installed
 if ! command -v yq &> /dev/null; then

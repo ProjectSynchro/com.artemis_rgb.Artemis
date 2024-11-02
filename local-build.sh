@@ -63,7 +63,7 @@ mkdir build-dir repo-dir
 
 # Build the Flatpak
 echo "Building the Flatpak..."
-flatpak-builder --ccache --force-clean --default-branch="$BRANCH" build-dir com.artemis_rgb.Artemis.yaml --repo=repo-dir || error "flatpak-builder failed"
+flatpak-builder --ccache --force-clean --default-branch="$BRANCH" build-dir com.artemis_rgb.Artemis.yml --repo=repo-dir || error "flatpak-builder failed"
 
 # Bundle the Flatpak
 echo "Bundling the Flatpak..."

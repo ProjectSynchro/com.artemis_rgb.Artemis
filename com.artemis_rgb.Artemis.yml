@@ -1,0 +1,165 @@
+id: 'com.artemis_rgb.Artemis'
+runtime: org.freedesktop.Platform
+runtime-version: &runtime-version '23.08'
+sdk: org.freedesktop.Sdk
+sdk-extensions: 
+  - org.freedesktop.Sdk.Extension.dotnet7
+
+command: Artemis.UI.Linux
+args:
+  - --channel=none
+finish-args:
+  - --socket=session-bus
+  # TODO: Replace this with wayland and fallback-x11 once Wayland support
+  #       becomes available:
+  #       https://github.com/AvaloniaUI/Avalonia/pull/8003
+  - --socket=x11
+  - --device=dri
+  - --share=ipc
+  - --share=network
+
+modules:
+
+  - shared-modules/libusb/libusb.json
+
+  - name: libhidapi
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://github.com/libusb/hidapi.git
+        tag: hidapi-0.14.0
+        commit: d3013f0af3f4029d82872c1a9487ea461a56dee4
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/libusb/hidapi/releases/latest
+          tag-query: .tag_name
+          timestamp-query: .published_at
+
+  - name: wooting-analog-sdk
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 wrapper/sdk/libwooting_analog_sdk.so "${FLATPAK_DEST}/lib/libwooting_analog_sdk.so"
+      - mkdir -p "${FLATPAK_DEST}/local/share/WootingAnalogPlugins/wooting-analog-plugin"
+      - install -Dm755 wrapper/sdk/libwooting_analog_plugin.so "${FLATPAK_DEST}/local/share/WootingAnalogPlugins/wooting-analog-plugin/libwooting_analog_plugin.so"
+    sources:
+      - type: archive
+        url: https://github.com/WootingKb/wooting-analog-sdk/releases/download/v0.7.5/wooting-analog-sdk-v0.7.5-x86_64-unknown-linux-gnu.tar.gz
+        sha512: 7615ee2b250e9e6eb25fd36711f7053a2e0fda55e1d172b5b1482dedcec4e2da67a1ab40110efe808981b99f14f6b6378a793c9b33dd196bf0e8190786893da2
+        strip-components: 0
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/WootingKb/wooting-analog-sdk/releases/latest
+          version-query: .tag_name
+          url-query: .assets[] | select(.name|endswith("-unknown-linux-gnu.tar.gz"))
+            | .browser_download_url
+
+  - name: artemis
+    buildsystem: simple
+    build-commands:
+      - |
+
+        # Set variables for output and build directories to be used later
+        PluginBuildDir="build/build-plugins"
+        StagingDir="build/$RUNTIME"
+        PluginStagingDir="$StagingDir/Plugins"
+
+        # Create build output and staging directories.
+        mkdir -p "$PluginOutDir" "$StagingDir" "$PluginStagingDir"
+
+        function GetVersion {
+          # Attempt to recreate 'version' job step from gh-actions branch workflow:
+          # https://github.com/Artemis-RGB/Artemis/blob/feature/gh-actions/.github/workflows/master.yml
+          local CoreProjFile
+          local ApiVersion
+          #local BranchName
+          local BuildDate
+          local NumberOfCommitsToday
+
+              # Find Artemis.Core csproj
+              CoreProjFile=$(find "Artemis/src" -type f -name "Artemis.Core.csproj")
+
+              # Sed-fu the backslashes and periods in branch names. (Unused)
+              #BranchName=$(git symbolic-ref --short -q HEAD | sed -r 's/[/.]+/-/g')
+
+              # Don't even want to attempt to parse xml with grep/awk/sed.. lol
+              ApiVersion=$(grep -o -P '(?<=<PluginApiVersion>).*(?=</PluginApiVersion>)' "$CoreProjFile")
+
+              # Get the number of commits using git rev-list, should be legit afaik
+              pushd Artemis
+              BuildDate=$(date --utc +"%Y-%m-%d")
+              NumberOfCommitsToday=$(git rev-list --count --after="$BuildDate 00:00" --before="$BuildDate 00:00" HEAD)
+              popd
+
+              # Assemble Final Version Number
+              VersionNumber="$ApiVersion.$(date +"%Y.%m%d").$NumberOfCommitsToday"
+        }
+
+        # Build Artemis UI component
+        GetVersion
+        UIProjFile=$(find "Artemis/src" -type f -name "Artemis.UI.Linux.csproj")
+        dotnet publish --configuration Release -p:Version="$VersionNumber" --runtime "$RUNTIME" --source ./nuget-sources --output "$StagingDir" --self-contained "$UIProjFile"
+        
+        # Search for all plugin projects
+        PluginProjects=$(find "Artemis.Plugins/src" -type f -name "*.csproj")
+
+        for PluginProjFile in $PluginProjects; do
+            # Build each of the found project files.
+            Name=$(basename -s .csproj "$PluginProjFile")
+            if [[ $Name == *"Ambilight"* ]]; then
+                echo "Skipping build of Plugin $Name due to bug."
+            else
+                echo "Building Plugin $Name"
+                Output="$PluginBuildDir/$Name"
+                mkdir -p "$Output"
+                dotnet publish --configuration Release --runtime "$RUNTIME" --source ./nuget-sources --output "$Output" --no-self-contained "$PluginProjFile";
+                # Zip the output and place it inside of the staging directory for app deployment
+                pushd "$Output"
+                    zip -r "$Name.zip" .
+                popd
+                cp "$Output/$Name.zip" "$PluginStagingDir"
+            fi
+        done
+
+        # Install Metainfo and desktop files
+        install -Dm644 com.artemis_rgb.Artemis.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
+        install -Dm644 com.artemis_rgb.Artemis.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
+
+        # Extract and install icon
+        install -Dm644 com.artemis_rgb.Artemis.png "${FLATPAK_DEST}/share/icons/hicolor/256x256/apps/${FLATPAK_ID}.png"
+
+        # Set executable bit on Artemis binary
+        chmod +x "$StagingDir/Artemis.UI.Linux"
+
+        # Install files to Flatpak staging folder.
+        cp -r --remove-destination "$StagingDir" "${FLATPAK_DEST}/bin"
+
+    build-options:
+      append-path: "/usr/lib/sdk/dotnet7/bin"
+      append-ld-library-path: "/usr/lib/sdk/dotnet7/lib"
+      env:
+        PKG_CONFIG_PATH: "/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/sdk/dotnet7/lib/pkgconfig"
+      arch:
+        aarch64:
+          env: 
+            RUNTIME: "linux-arm64"
+        x86_64:
+          env: 
+            RUNTIME: "linux-x64"
+    sources:
+      - type: file
+        path: com.artemis_rgb.Artemis.desktop
+      - type: file
+        path: com.artemis_rgb.Artemis.metainfo.xml
+      - type: file
+        path: com.artemis_rgb.Artemis.png
+      - type: git
+        url: https://github.com/Artemis-RGB/Artemis.git
+        dest: "Artemis"
+        commit: 1f3f213405e8653887177dd63ec3d479c6917eb1
+      - type: git
+        url: https://github.com/Artemis-RGB/Artemis.Plugins.git
+        dest: "Artemis.Plugins"
+        commit: 395f9b64480b5d58fcc20508120a4994bfc0a564
+      - artemis-sources.json
+      - artemis-plugins-sources.json
+      - dotnet-runtime-sources.json
