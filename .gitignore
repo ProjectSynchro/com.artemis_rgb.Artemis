@@ -1,6 +1,7 @@
 # Flatpak Builder directories
 .flatpak-builder/*
 build-dir/*
+repo-dir/*
 
 # Updater directories and files
 tmp*/
