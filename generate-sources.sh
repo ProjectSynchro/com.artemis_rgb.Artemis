@@ -35,13 +35,12 @@ check_command() {
 UPDATE_TARGET="all"
 
 usage() {
-    echo "Usage: $(basename "$0") [-v] [-a] [-p] [-d]"
+    echo "Usage: $(basename "$0") [-v] [-a] [-p]"
     echo
     echo "Options:"
     echo "  -v    Verbose output"
     echo "  -a    Update Artemis NuGet sources"
     echo "  -p    Update Artemis.Plugins NuGet sources"
-    echo "  -d    Update .NET runtime sources (TODO)"
     exit 1
 }
 
@@ -55,9 +54,6 @@ while getopts "vapd" OPTION; do
             ;;
         p)
             UPDATE_TARGET="p"
-            ;;
-        d)
-            UPDATE_TARGET="d"
             ;;
         *)
             usage
@@ -195,12 +191,6 @@ update_artemis_plugins_sources() {
     echo "'artemis-plugins-sources.json' generated successfully."
 }
 
-update_dotnet_runtime_sources() {
-    echo "Updating .NET runtime sources..."
-    # TODO: Implement the update for .NET runtime sources
-    echo "This feature is not implemented yet."
-}
-
 # ---------------------------
 # Update Sources Based on Selection
 # ---------------------------
@@ -209,16 +199,12 @@ case "$UPDATE_TARGET" in
     all)
         update_artemis_sources
         update_artemis_plugins_sources
-        update_dotnet_runtime_sources
         ;;
     a)
         update_artemis_sources
         ;;
     p)
         update_artemis_plugins_sources
-        ;;
-    d)
-        update_dotnet_runtime_sources
         ;;
     *)
         usage
