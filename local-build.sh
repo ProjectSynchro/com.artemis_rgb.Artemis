@@ -92,6 +92,4 @@ echo "Flatpak build and bundle completed successfully."
 
 # Optionally, install the Flatpak
 echo "Installing the Flatpak..."
-flatpak install --user --reinstall -y "${FLATPAK_ID}.flatpak" || error "Flatpak installation failed"
-
-echo "Flatpak installation completed successfully."
+flatpak install --user --reinstall "${FLATPAK_ID}.flatpak"
