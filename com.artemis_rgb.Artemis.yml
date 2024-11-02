@@ -19,6 +19,11 @@ finish-args:
 - --share=ipc
 - --share=network
 - --env=DOTNET_ROOT=/app/lib/dotnet
+# Pass in full session bus access due to Avalonia being wacky about creating tray icons.
+- --socket=session-bus
+# Allow access to appindicator icons
+- --talk-name=org.kde.StatusNotifierWatcher
+- --talk-name=com.canonical.AppMenu.Registrar
 modules:
 - shared-modules/libusb/libusb.json
 - name: libhidapi
