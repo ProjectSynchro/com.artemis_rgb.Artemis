@@ -180,7 +180,6 @@ def update_artemis_sources():
     cmd = ['./builder-tools/dotnet/flatpak-dotnet-generator.py',
            '-d', DOTNET_VERSION,
            '-f', FREEDESKTOP_VERSION,
-           '-r', 'linux-x64',
            'artemis-sources.json'] + projects
 
     result = subprocess.run(cmd)
@@ -219,7 +218,6 @@ def update_artemis_plugins_sources():
     cmd = ['./builder-tools/dotnet/flatpak-dotnet-generator.py',
            '-d', DOTNET_VERSION,
            '-f', FREEDESKTOP_VERSION,
-           '-r', 'linux-x64',
            'artemis-plugins-sources.json'] + projects
 
     result = subprocess.run(cmd)
