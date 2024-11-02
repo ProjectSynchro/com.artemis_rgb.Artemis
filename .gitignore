@@ -2,6 +2,7 @@
 .flatpak-builder/*
 build-dir/*
 repo-dir/*
+*.flatpak
 
 # Updater directories and files
 tmp*/
