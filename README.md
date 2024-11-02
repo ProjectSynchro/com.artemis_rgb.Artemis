@@ -37,6 +37,6 @@ First clone this repo and change directory into it, then:
 
 ### Using a Wooting? 
 
-Enable the `device=all` permission in Flatseal, or by typing the following in a console: 
+If the keyboard doesn't work, try enabling the `device=all` permission in Flatseal, or by typing the following in a console: 
 
 `flatpak override com.artemis_rgb.Artemis --device=all`
