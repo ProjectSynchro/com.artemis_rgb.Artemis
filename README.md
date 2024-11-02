@@ -32,7 +32,7 @@ First clone this repo and change directory into it, then:
 
 ### Getting dotnet sources manually
 1. Clone this repo
-2. Install `git`, `python`, and `yq` for your distro
+2. Install `git`, and `python` for your distro
 3. Run `./generate-sources.sh`
 4. Verify the updates and commit the updated `artemis-sources.json` and `artemis-plugins-sources.json` files.
 
