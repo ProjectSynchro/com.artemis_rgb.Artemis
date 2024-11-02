@@ -99,13 +99,8 @@ echo "Staging Artemis Flatpak"
 install -Dm644 com.artemis_rgb.Artemis.metainfo.xml /app/share/metainfo/com.artemis_rgb.Artemis.metainfo.xml
 install -Dm644 com.artemis_rgb.Artemis.desktop /app/share/applications/com.artemis_rgb.Artemis.metainfo.desktop
 
-# Install
-pushd icons
-find . -maxdepth 1 -mindepth 1 -type d -print0 | while IFS= read -r -d '' folder
-do
-    install -Dm644 "$folder/com.artemis_rgb.Artemis.png" "/app/share/icons/hicolor/$folder/apps/com.artemis_rgb.Artemis.png"
-done
-popd 
+# Extract and install icon
+install -Dm644 com.artemis_rgb.Artemis.png /app/share/icons/hicolor/256x256/apps/com.artemis_rgb.Artemis.png
 
 # Set executable bit on Artemis binary
 chmod +x "$StagingDir/Artemis.UI.Linux"
