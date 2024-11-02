@@ -2,9 +2,8 @@ id: 'com.artemis_rgb.Artemis'
 runtime: org.freedesktop.Platform
 runtime-version: &runtime-version '23.08'
 sdk: org.freedesktop.Sdk
-sdk-extensions: 
+sdk-extensions:
   - org.freedesktop.Sdk.Extension.dotnet7
-
 command: Artemis.UI.Linux
 args:
   - --channel=none
@@ -17,11 +16,8 @@ finish-args:
   - --device=dri
   - --share=ipc
   - --share=network
-
 modules:
-
   - shared-modules/libusb/libusb.json
-
   - name: libhidapi
     buildsystem: cmake-ninja
     sources:
@@ -34,7 +30,6 @@ modules:
           url: https://api.github.com/repos/libusb/hidapi/releases/latest
           tag-query: .tag_name
           timestamp-query: .published_at
-
   - name: wooting-analog-sdk
     buildsystem: simple
     build-commands:
@@ -50,14 +45,11 @@ modules:
           type: json
           url: https://api.github.com/repos/WootingKb/wooting-analog-sdk/releases/latest
           version-query: .tag_name
-          url-query: .assets[] | select(.name|endswith("-unknown-linux-gnu.tar.gz"))
-            | .browser_download_url
-
+          url-query: .assets[] | select(.name|endswith("-unknown-linux-gnu.tar.gz")) | .browser_download_url
   - name: artemis
     buildsystem: simple
     build-commands:
       - |
-
         # Set variables for output and build directories to be used later
         PluginBuildDir="build/build-plugins"
         StagingDir="build/$RUNTIME"
@@ -98,7 +90,7 @@ modules:
         GetVersion
         UIProjFile=$(find "Artemis/src" -type f -name "Artemis.UI.Linux.csproj")
         dotnet publish --configuration Release -p:Version="$VersionNumber" --runtime "$RUNTIME" --source ./nuget-sources --output "$StagingDir" --self-contained "$UIProjFile"
-        
+
         # Search for all plugin projects
         PluginProjects=$(find "Artemis.Plugins/src" -type f -name "*.csproj")
 
@@ -132,7 +124,6 @@ modules:
 
         # Install files to Flatpak staging folder.
         cp -r --remove-destination "$StagingDir" "${FLATPAK_DEST}/bin"
-
     build-options:
       append-path: "/usr/lib/sdk/dotnet7/bin"
       append-ld-library-path: "/usr/lib/sdk/dotnet7/lib"
@@ -140,10 +131,10 @@ modules:
         PKG_CONFIG_PATH: "/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/sdk/dotnet7/lib/pkgconfig"
       arch:
         aarch64:
-          env: 
+          env:
             RUNTIME: "linux-arm64"
         x86_64:
-          env: 
+          env:
             RUNTIME: "linux-x64"
     sources:
       - type: file
