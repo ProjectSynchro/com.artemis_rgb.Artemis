@@ -45,6 +45,7 @@ jobs:
           [ -z "$(git status -s -uno)" ] || echo "updated=true" >> $GITHUB_OUTPUT
 
       - name: Generate dotnet sources
+        uses: docker://flatpak/flatpak-builder:base
         if: steps.is-updated.outputs.updated
         run: |
           ./generate-sources.py
