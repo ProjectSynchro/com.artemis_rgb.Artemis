@@ -31,7 +31,7 @@ jobs:
 
       - name: Install Flatpak
         run: |
-          apt-get install -y flatpak
+          sudo apt-get install -y flatpak
 
       - name: Check for Flatpak source updates via Flatpak External Data Checker
         uses: docker://ghcr.io/flathub/flatpak-external-data-checker:latest
