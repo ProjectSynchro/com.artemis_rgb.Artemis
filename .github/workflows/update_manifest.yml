@@ -24,6 +24,10 @@ jobs:
         with:
           ref: ${{ matrix.branch }}
 
+      - name: Install ruamel
+        run: |
+          pip install ruamel.yaml
+
       - name: Check for Flatpak source updates via Flatpak External Data Checker
         uses: docker://ghcr.io/flathub/flatpak-external-data-checker:latest
         with:
