@@ -46,7 +46,7 @@ jobs:
       - name: Generate dotnet sources
         if: steps.is-updated.outputs.updated
         run: |
-          ./generate-sources.sh
+          ./generate-sources.py
 
       - name: Reset Flatpak manifest to pre-modified state
         run: |
