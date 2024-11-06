@@ -40,6 +40,8 @@ modules:
       timestamp-query: .published_at
 - name: wooting-analog-sdk
   buildsystem: simple
+  only-arches:
+  - x86_64
   build-commands:
   - install -Dm755 wrapper/sdk/libwooting_analog_sdk.so "${FLATPAK_DEST}/lib/libwooting_analog_sdk.so"
   sources:
@@ -49,13 +51,11 @@ modules:
     sha512: 
       7615ee2b250e9e6eb25fd36711f7053a2e0fda55e1d172b5b1482dedcec4e2da67a1ab40110efe808981b99f14f6b6378a793c9b33dd196bf0e8190786893da2
     strip-components: 0
-    only-arches:
-      - x86_64
     x-checker-data:
       type: json
       url: https://api.github.com/repos/WootingKb/wooting-analog-sdk/releases/latest
       version-query: .tag_name
-      url-query: .assets[] | select(.name|endswith("-unknown-linux-gnu.tar.gz")) |
+      url-query: .assets[] | select(.name|endswith("x86_64-unknown-linux-gnu.tar.gz ")) |
         .browser_download_url
 - name: dotnet
   buildsystem: simple
@@ -130,34 +130,62 @@ modules:
     # Search for all plugin projects
     PluginProjects=$(find "Artemis.Plugins/src" -type f -name "*.csproj")
 
-    for PluginProjFile in $PluginProjects; do
-        # Build each of the found project files.
+    # Function to build a single plugin
+    build_plugin() {
+        PluginProjFile="$1"
         Name=$(basename -s .csproj "$PluginProjFile")
-        #if [[ $Name == *"Ambilight"* ]]; then
-        #    echo "Skipping build of Plugin $Name due to bug."
-        #else
-            echo "Building Plugin $Name"
-            Output="$PluginBuildDir/$Name"
-            mkdir -p "$Output"
-            dotnet publish --configuration Release --source ./nuget-sources --output "$Output" --no-self-contained "$PluginProjFile"
-            # Zip the output and place it inside of the staging directory for app deployment
-            pushd "$Output"
-                zip -r "$Name.zip" .
-            popd
-            cp "$Output/$Name.zip" "$PluginStagingDir"
-        #fi
+        
+        echo "Building Plugin $Name"
+        Output="$PluginBuildDir/$Name"
+        mkdir -p "$Output"
+        
+        # Build the plugin
+        dotnet publish --configuration Release -p:Version="$VersionNumber" --source ./nuget-sources --output "$Output" --no-self-contained "$PluginProjFile"
+        
+        # Zip the output
+        pushd "$Output" > /dev/null
+            zip -r "$Name.zip" .
+        popd > /dev/null
+        
+        # Copy the zip to the staging directory
+        cp "$Output/$Name.zip" "$PluginStagingDir"
+        
+        echo "Finished Building Plugin $Name"
+    }
+
+    # Export the function and variables if needed
+    export -f build_plugin
+    export PluginBuildDir StagingDir PluginStagingDir VersionNumber
+
+    # Initialize a counter for background jobs
+    MAX_JOBS="$(nproc --all)"  # Adjust this number based on your CPU cores
+    current_jobs=0
+
+    for PluginProjFile in $PluginProjects; do
+        build_plugin "$PluginProjFile" &
+        ((current_jobs+=1))
+        
+        # If the number of background jobs reaches MAX_JOBS, wait for any to finish
+        if [[ "$current_jobs" -ge "$MAX_JOBS" ]]; then
+            wait -n
+            ((current_jobs-=1))
+        fi
     done
 
+    # Wait for all remaining background jobs to finish
+    wait
+
+    # Continue with the rest of your script
     # Install Metainfo and desktop files
     install -Dm644 com.artemis_rgb.Artemis.metainfo.xml "${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml"
     install -Dm644 com.artemis_rgb.Artemis.desktop "${FLATPAK_DEST}/share/applications/${FLATPAK_ID}.desktop"
 
     # Extract and install icons of various sizes
-    pushd "$StagingDir/Icons"
+    pushd "$StagingDir/Icons" > /dev/null
     for size in 16x16 32x32 48x48 64x64 128x128 256x256; do
         install -Dm644 "$size/apps/artemis.png" "${FLATPAK_DEST}/share/icons/hicolor/$size/apps/${FLATPAK_ID}.png"
     done
-    popd
+    popd > /dev/null
 
     # Set executable bit on Artemis binary
     chmod +x "$StagingDir/Artemis.UI.Linux"
@@ -166,7 +194,7 @@ modules:
     cp -r --remove-destination "$StagingDir/." "${FLATPAK_DEST}/bin"
 
     # Install Flatpak specific wrapper
-    install -Dm755 run.sh ${FLATPAK_DEST}/bin/run.sh
+    install -Dm755 run.sh "${FLATPAK_DEST}/bin/run.sh"
   sources:
   - type: script
     dest-filename: run.sh
