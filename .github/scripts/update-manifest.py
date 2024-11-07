@@ -114,6 +114,7 @@ except Exception as e:
 # Write the updated manifest back to the file
 try:
     with open(MANIFEST_FILE, 'w') as f:
+        yaml.indent(mapping=2, sequence=4, offset=2)
         yaml.dump(manifest, f)
 except Exception as e:
     print(f"Failed to write updated manifest file '{MANIFEST_FILE}': {e}")
