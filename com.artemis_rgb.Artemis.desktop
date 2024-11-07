@@ -7,5 +7,5 @@ Comment=Provides advanced unified lighting across many different brands RGB peri
 Categories=Utility;
 
 Icon=com.artemis_rgb.Artemis
-Exec=Artemis.UI.Linux
+Exec=run.sh
 Terminal=false
