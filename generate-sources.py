@@ -178,6 +178,7 @@ def update_artemis_sources():
 
     logging.info("Generating 'artemis-sources.json'...")
     cmd = ['./builder-tools/dotnet/flatpak-dotnet-generator.py',
+           '-r', 'linux-x64', 'linux-arm64',
            '-d', DOTNET_VERSION,
            '-f', FREEDESKTOP_VERSION,
            'artemis-sources.json'] + projects
@@ -216,6 +217,7 @@ def update_artemis_plugins_sources():
 
     logging.info("Generating 'artemis-plugins-sources.json'...")
     cmd = ['./builder-tools/dotnet/flatpak-dotnet-generator.py',
+           '-r', 'linux-x64', 'linux-arm64',
            '-d', DOTNET_VERSION,
            '-f', FREEDESKTOP_VERSION,
            'artemis-plugins-sources.json'] + projects
