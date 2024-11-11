@@ -62,13 +62,27 @@ logging.info("Checking for required tools...")
 REQUIRED_TOOLS = [
     "git",
     "python",
-    "yq",
+    "flatpak",
 ]
 
 for cmd in REQUIRED_TOOLS:
     check_command(cmd)
 
 logging.info("All required tools are installed.")
+
+# Modify the check for the Flatpak SDK extension
+logging.info("Checking for required Flatpak SDK extension...")
+FLATPAK_EXT = f"org.freedesktop.Sdk.Extension.dotnet{DOTNET_VERSION}//{FREEDESKTOP_VERSION}"
+cmd = ['flatpak', 'info', FLATPAK_EXT]
+result = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+if result.returncode != 0:
+    logging.info(f"Installing required Flatpak SDK extension '{FLATPAK_EXT}'...")
+    cmd_install = ['flatpak', 'install', '-y', 'flathub', FLATPAK_EXT]
+    result_install = subprocess.run(cmd_install)
+    if result_install.returncode != 0:
+        error(f"Failed to install Flatpak SDK extension '{FLATPAK_EXT}'. Please install it manually and try again.")
+else:
+    logging.info(f"Required Flatpak SDK extension '{FLATPAK_EXT}' is installed.")
 
 # ---------------------------
 # Extract Variables from Manifest
