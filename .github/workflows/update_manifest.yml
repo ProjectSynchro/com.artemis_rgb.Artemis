@@ -24,10 +24,10 @@ jobs:
 
     steps:
 
-      - name: Install Python and yq
+      - name: Install requests, ruamel.yaml and yq
         run: |
           python -m ensurepip --upgrade
-          python -m pip install ruamel.yaml yq
+          python -m pip install requests ruamel.yaml yq
 
       - uses: actions/checkout@v4
         with:
