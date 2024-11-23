@@ -46,14 +46,17 @@ modules:
       - install -Dm755 wrapper/sdk/libwooting_analog_sdk.so "${FLATPAK_DEST}/lib/libwooting_analog_sdk.so"
     sources:
       - type: archive
-        url: https://github.com/WootingKb/wooting-analog-sdk/releases/download/v0.8.0/wooting-analog-sdk-v0.8.0-x86_64-unknown-linux-gnu.tar.gz
-        sha512: bb93460de0ad4096ba160469945f2ba0a35a081b604627059905a48f5d73ac68488fa568b9d7980be46778aa5be79ae3cb164f000c0c5f67cce29f4b45128663
+        url: 
+          https://github.com/WootingKb/wooting-analog-sdk/releases/download/v0.8.0/wooting-analog-sdk-v0.8.0-x86_64-unknown-linux-gnu.tar.gz
+        sha512: 
+          bb93460de0ad4096ba160469945f2ba0a35a081b604627059905a48f5d73ac68488fa568b9d7980be46778aa5be79ae3cb164f000c0c5f67cce29f4b45128663
         strip-components: 0
         x-checker-data:
           type: json
           url: https://api.github.com/repos/WootingKb/wooting-analog-sdk/releases/latest
           version-query: .tag_name
-          url-query: .assets[] | select(.name|endswith("x86_64-unknown-linux-gnu.tar.gz")) | .browser_download_url
+          url-query: .assets[] | select(.name|endswith("x86_64-unknown-linux-gnu.tar.gz"))
+            | .browser_download_url
   - name: dotnet
     buildsystem: simple
     build-commands:
@@ -203,12 +206,12 @@ modules:
         path: com.artemis_rgb.Artemis.metainfo.xml
       - type: git
         url: https://github.com/Artemis-RGB/Artemis.git
-        commit: 972f1c638cd8424a71a8f967346a55bd47ef954c
+        commit: 4c6ca9b511d45f8aea5533c31b091b98af118c14
         dest: Artemis
         disable-shallow-clone: true
       - type: git
         url: https://github.com/Artemis-RGB/Artemis.Plugins.git
-        commit: 5636fd653fae6874eb82bc2503ed7c8d9934c446
+        commit: c574f62f255999a1460fc39d4d6885fd512b7db0
         dest: Artemis.Plugins
         disable-shallow-clone: true
       - artemis-sources.json
