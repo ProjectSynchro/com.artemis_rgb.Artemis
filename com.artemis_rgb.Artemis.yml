@@ -1,13 +1,13 @@
 id: com.artemis_rgb.Artemis
 runtime: org.freedesktop.Platform
-runtime-version: &runtime-version '23.08'
+runtime-version: &runtime-version '24.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.dotnet8
+  - org.freedesktop.Sdk.Extension.dotnet9
 build-options:
-  prepend-path: /usr/lib/sdk/dotnet8/bin
-  append-ld-library-path: /usr/lib/sdk/dotnet8/lib
-  prepend-pkg-config-path: /usr/lib/sdk/dotnet8/lib/pkgconfig
+  prepend-path: /usr/lib/sdk/dotnet9/bin
+  append-ld-library-path: /usr/lib/sdk/dotnet9/lib
+  prepend-pkg-config-path: /usr/lib/sdk/dotnet9/lib/pkgconfig
 command: run.sh
 
 finish-args:
@@ -60,7 +60,7 @@ modules:
   - name: dotnet
     buildsystem: simple
     build-commands:
-      - /usr/lib/sdk/dotnet8/bin/install.sh
+      - /usr/lib/sdk/dotnet9/bin/install.sh
   - name: artemis
     buildsystem: simple
     build-commands:
@@ -206,12 +206,12 @@ modules:
         path: com.artemis_rgb.Artemis.metainfo.xml
       - type: git
         url: https://github.com/Artemis-RGB/Artemis.git
-        commit: 4c6ca9b511d45f8aea5533c31b091b98af118c14
+        commit: acd35176e1c6661a887e467ef4b294eddb532726
         dest: Artemis
         disable-shallow-clone: true
       - type: git
         url: https://github.com/Artemis-RGB/Artemis.Plugins.git
-        commit: c574f62f255999a1460fc39d4d6885fd512b7db0
+        commit: 5d2fe3d028c24b5cc78fc748b431ed1b984b3cd4
         dest: Artemis.Plugins
         disable-shallow-clone: true
       - artemis-sources.json
