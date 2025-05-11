@@ -142,13 +142,8 @@ modules:
             # Build the plugin
             dotnet publish --configuration Release -p:Version="$VersionNumber" --source ./nuget-sources --output "$Output" --no-self-contained "$PluginProjFile"
             
-            # Zip the output
-            pushd "$Output" > /dev/null
-                zip -r "$Name.zip" .
-            popd > /dev/null
-            
-            # Copy the zip to the staging directory
-            cp "$Output/$Name.zip" "$PluginStagingDir"
+            # Zip seems to fail to package some of the files, so we use bsdtar instead
+            bsdtar -a -cf "$PluginStagingDir/$Name.zip" -C "$Output" .
             
             echo "Finished Building Plugin $Name"
         }
