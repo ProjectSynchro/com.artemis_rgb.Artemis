@@ -1,3 +1,5 @@
+> ⚠️ **Notice:**  
+> This project has migrated to **[Codeberg](https://codeberg.org/Synchro/com.artemis_rgb.Artemis)**.  
 
 # Artemis Flatpak Repository
 
